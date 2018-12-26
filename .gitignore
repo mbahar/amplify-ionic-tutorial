@@ -35,3 +35,4 @@ UserInterfaceState.xcuserstate
 
 src/aws-exports.js
 amplify
+.amplifyrc

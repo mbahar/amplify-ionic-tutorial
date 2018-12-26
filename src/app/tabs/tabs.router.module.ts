@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
+import { AuthGuardService } from '../services/auth-route-guard';
 import { TabsPage } from './tabs.page';
 
 const routes: Routes = [
@@ -9,42 +9,34 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
+        path: 'list',
+        canActivate: [AuthGuardService],
         children: [
           {
             path: '',
-            loadChildren: '../tab1/tab1.module#Tab1PageModule'
+            loadChildren: '../listTab/listTab.module#ListTabModule'
           }
         ]
       },
-      {
-        path: 'tab2',
-        children: [
-          {
-            path: '',
-            loadChildren: '../tab2/tab2.module#Tab2PageModule'
-          }
-        ]
-      },
-      {
-        path: 'tab3',
-        children: [
-          {
-            path: '',
-            loadChildren: '../tab3/tab3.module#Tab3PageModule'
-          }
-        ]
-      },
-      {
-        path: '',
-        redirectTo: '/tabs/tab1',
-        pathMatch: 'full'
-      }
+    {
+      path: 'home',
+      children: [
+        {
+          path: '',
+          loadChildren: '../homeTab/homeTab.module#HomeTabModule'
+        }
+      ]
+    },
+    {
+      path: '',
+      redirectTo: '/tabs/home',
+      pathMatch: 'full'
+    }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/tab1',
+    redirectTo: '/tabs/home',
     pathMatch: 'full'
   }
 ];

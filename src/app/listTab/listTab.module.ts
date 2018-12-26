@@ -3,19 +3,18 @@ import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AuthGuardService } from '../services/auth-route-guard';
-import { TabsPageRoutingModule } from './tabs.router.module';
-
-import { TabsPage } from './tabs.page';
+import { ListTab } from './listTab.page';
+import { ListItemModal } from './listTab.item.modal';
 
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
     FormsModule,
-    TabsPageRoutingModule
+    RouterModule.forChild([{ path: '', component: ListTab }])
   ],
-  declarations: [TabsPage],
-  providers: [AuthGuardService]
+  declarations: [ListTab, ListItemModal],
+  entryComponents: [ ListTab, ListItemModal]
 })
-export class TabsPageModule {}
+
+export class ListTabModule {}

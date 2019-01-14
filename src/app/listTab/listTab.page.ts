@@ -1,4 +1,5 @@
 // ----- CODE USED IN PART 2 OF THE TUTORIAL -------
+
 // import { Component, OnInit, Input } from '@angular/core';
 // import { ModalController, Events } from '@ionic/angular';
 // import { ToDoItem, ToDoList } from '../classes/item.class';
@@ -194,7 +195,7 @@ export class ListTab implements OnInit {
   }
 
   async edit(item){
-    API.graphql(graphqlOperation(mutations.updateTodo, { input: item }));
+    await API.graphql(graphqlOperation(mutations.updateTodo, { input: item }));
     await this.getItems();
   }
 

@@ -17,7 +17,7 @@ export class ToDoItem {
   status: any;
 
   constructor(params){
-    this.id = params.id ? params.id : uuid();
+    this.id = params.id || uuid();
     this.title = params.title;
     this.description = params.description;
     this.status = 'new';
